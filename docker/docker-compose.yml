@@ -1,0 +1,56 @@
+version: '2.0'
+
+volumes:
+  dev:
+    driver: local
+    driver_opts:
+      device: "/home/nounique/_GIT_REPO/nounique.github.io"
+      o: bind
+      type: none
+
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: ./Dockerfile_dev
+    #restart: always
+    working_dir: /srv/jekyll
+    user: root
+    ports:
+      - "4001:4000"
+    volumes:
+      - dev:/srv/jekyll:rw
+      - ~/.bashrc:/root/.bashrc
+      - ~/.vimrc:/root/.vimrc
+    environment:
+      JEKYLL_ENV: production
+    entrypoint:
+      - /bin/bash
+    stdin_open: true # -i(interactive) option in docker
+    tty: true # -t(tty) option in docker
+    shm_size: 4G
+    #command:
+    #  jekyll serve --config _config.yml -H 0.0.0.0 -P 4000
+
+  release:
+    build:
+      context: .
+      dockerfile: ./Dockerfile_dev
+    restart: always
+    working_dir: /srv/jekyll
+    user: root
+    ports:
+      - "4000:4000"
+    volumes:
+      - dev:/srv/jekyll:rw
+      - ~/.bashrc:/root/.bashrc
+      - ~/.vimrc:/root/.vimrc
+    environment:
+      JEKYLL_ENV: production
+    #entrypoint:
+    #  - /bin/bash
+    stdin_open: true # -i(interactive) option in docker
+    tty: true # -t(tty) option in docker
+    shm_size: 4G
+    command:
+      jekyll serve --config _config.yml -H 0.0.0.0 -P 4000

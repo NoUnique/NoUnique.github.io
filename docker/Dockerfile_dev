@@ -1,0 +1,8 @@
+FROM jekyll/jekyll:pages
+
+# for minimal mistakes remote theme
+RUN gem install jekyll-include-cache
+
+# for debugging
+RUN apk add bash \
+            vim
