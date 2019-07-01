@@ -1,5 +1,11 @@
 FROM ruby:alpine
 
+# change timezone
+RUN apk add tzdata \
+ && cp /usr/share/zoneinfo/Asia/Seoul /etc/localtime \
+ && echo "Asia/Seoul" > /etc/timezone \
+ && apk del tzdata
+
 # to build gem libraries
 RUN apk add make \
             gcc \
