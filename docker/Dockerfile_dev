@@ -1,7 +1,15 @@
-FROM jekyll/jekyll:pages
+FROM ruby:alpine
 
-# for minimal mistakes remote theme
-RUN gem install jekyll-include-cache
+# to build gem libraries
+RUN apk add make \
+            gcc \
+            g++ \
+            libc-dev \
+            libxml2-dev \
+            libxslt-dev
+
+ADD ./Gemfile ./
+RUN bundle install
 
 # for debugging
 RUN apk add bash \
