@@ -1,5 +1,5 @@
 ---
-title: "Dev: 우분투 18.04 한글키보드 세팅하기"
+title: "Dev: 우분투 18.04 - 한글키보드 세팅하기"
 categories:
   - Development
 tags:
