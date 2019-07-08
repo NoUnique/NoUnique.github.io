@@ -4,7 +4,7 @@ volumes:
   dev:
     driver: local
     driver_opts:
-      device: "/home/nounique/_GIT_REPO/nounique.github.io"
+      device: "/home/nounique/_GIT_REPO/pages"
       o: bind
       type: none
 
