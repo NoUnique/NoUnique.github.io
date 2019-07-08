@@ -30,16 +30,16 @@ function fn_is_running() {
     fi
 }
 
-function fn_check_release() {
-    if [[ "${IS_RELEASE}" == "TRUE" ]]; then
-        DEFAULT_SERVICE="release"
-    fi
-}
-
 function fn_is_exist() {
     IS_EXIST=`docker-compose -f ${SCRIPT_DIR}/${COMPOSE_FNAME} -p ${COMPOSE_PROJECT_NAME} ps -q ${DEFAULT_SERVICE}`
     if [[ "${IS_EXIST}" != "FALSE" ]] && [[ -n "${IS_EXIST}" ]]; then
         IS_EXIST="TRUE"
+    fi
+}
+
+function fn_check_release() {
+    if [[ "${IS_RELEASE}" == "TRUE" ]]; then
+        DEFAULT_SERVICE="release"
     fi
 }
 
@@ -86,6 +86,7 @@ function fn_down() {
 
 function fn_main() {
     fn_configure
+    fn_check_release
     if [[ "${DO_DOWN}" == "TRUE" ]]; then
         fn_down
     elif [[ "${DO_KILL}" == "TRUE" ]]; then
