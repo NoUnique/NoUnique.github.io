@@ -15,6 +15,7 @@ tags:
 
 스크립트파일을 열고 첫 줄에 shebang을 추가한다  
 (shebang, sha-bang, hashbang, pound-bang, hash-pling 등으로 불림)  
+
 ```bash
 $ vi compose.sh
 ```
@@ -24,8 +25,8 @@ $ vi compose.sh
 
 echo 'Hello'
 {% endhighlight %}
-<br/>
 
+<br/>
 다음 명령어로 퍼미션을 확인한다.
 
 ```bash
@@ -33,15 +34,15 @@ $ ls -al
 
 -rw-r--r-x 1 nounique nounique 5214  7월  9 05:04 compose.sh*
 ```
-<br/>
 
+<br/>
 chmod 명령어를 통해 실행권한('x')을 추가('+')할 수 있다.
 
 ```bash
 $ chmod +x compose.sh
 ```
-<br/>
 
+<br/>
 추가된 실행권한 확인
 
 ```bash
@@ -49,8 +50,8 @@ $ ls -al
 
 -rwxr-xr-x 1 nounique nounique 5214  7월  9 05:04 compose.sh*
 ```
-<br/>
 
+<br/>
 직접 실행이 가능하다
 
 ```bash
