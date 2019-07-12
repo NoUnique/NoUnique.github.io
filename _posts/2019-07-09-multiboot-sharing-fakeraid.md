@@ -25,7 +25,7 @@ RAID 구현 방식에 따라 3가지로 구분된다.
 우분투에서 RAID Array를 인식시키기 위한 툴로 dmraid와 mdadm가 널리 쓰이고 있다.  
 인터넷에는 dmraid는 software RAID와 fakeRAID를 지원하고, mdadm은 software RAID만 지원한다고 되어있는 글도 있지만, 사실 mdadm도 fakeRAID를 지원한다.
 
-dmraid의 경우 대용량 isw(Intel Software RIAD)인식에 [버그](https://askubuntu.com/questions/113561/how-to-modify-fix-incorrectly-detected-dmraid-fakeraid-raid-10-array)가 있기 때문에 논외로 한다.  
+dmraid의 경우 대용량 isw(Intel Software RAID)인식에 [버그](https://askubuntu.com/questions/113561/how-to-modify-fix-incorrectly-detected-dmraid-fakeraid-raid-10-array)가 있기 때문에 논외로 한다.  
 (나도 24TB/21.83TiB로 인식되지 않고 3.83TiB로 인식되는 동일한 버그를 겪었다.)
 
 
