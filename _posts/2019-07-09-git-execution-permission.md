@@ -22,7 +22,7 @@ false
 ```bash
 $ git config core.fileMode true
 ```
-<br/>
+<br>
 
 
 파일권한 변경 추적이 켜져있다면 파일 권한 변경만으로도 적용이 가능하다.
@@ -30,7 +30,7 @@ $ git config core.fileMode true
 ```bash
 $ chmod +x compose.sh
 ```
-<br/>
+<br>
 
 
 혹시나 위의 방법으로 적용이 안될 경우에는 강제로 git index를 업데이트시켜주어야 한다.
@@ -43,14 +43,14 @@ $ git ls-tree HEAD
 
 100644 blob 6dc27becc23538923880dccca4314f54c4df60cc    compose.sh
 ```
-<br/>
+<br>
 
 실행권한을 추가해준다
 
 ```bash
 $ git update-index --chmod=+x compose.sh
 ```
-<br/>
+<br>
 
 완료
 

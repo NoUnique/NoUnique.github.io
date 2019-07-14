@@ -29,14 +29,14 @@ dmraid의 경우 대용량 isw(Intel Software RAID)인식에 [버그](https://as
 (나도 24TB/21.83TiB로 인식되지 않고 3.83TiB로 인식되는 동일한 버그를 겪었다.)
 
 
-<br/>
+<br>
 우선 mdadm을 설치한다.
 
 ```bash
 $ sudo apt install mdadm
 ```
 
-<br/>
+<br>
 스캔하고 assemble한다.
 
 ```bash
@@ -48,7 +48,7 @@ mdadm: Started /dev/md/Volume1_0 with 3 devices
 여기서 '/dev/md/Volume1_0'이 볼륨명이다.
 
 
-<br/>
+<br>
 설정 내역을 확인한다
 
 ```bash
@@ -58,12 +58,12 @@ ARRAY /dev/md/imsm0 metadata=imsm UUID=cf8dcd99:e186a5e1:abe671a1:67a29326
 ARRAY /dev/md/Volume1_0 container=/dev/md/imsm0 member=0 UUID=02595f12:57112ef4:e53a3320:09bf0e31
 ```
 
-<br/>
+<br>
 정상적으로 수행되었다면 다음과 같은 결과를 확인할 수 있다.
 
 ![mdadm_cmd](/assets/images/2019-07-09-multiboot-sharing-fakeraid_001.png)
 
-<br/>
+<br>
 Gparted에서 볼륨을 포맷하고 마운트시켜 사용하면 된다.
 
 ![mdadm_gparted](/assets/images/2019-07-09-multiboot-sharing-fakeraid_002.png)

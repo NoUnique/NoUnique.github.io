@@ -17,7 +17,7 @@ tags:
 
 ![indicator-stickynotes](/assets/images/2019-07-11-ubuntu-stickynotes_001.png)
 
-<br/>
+<br>
 설치도 딱 세 줄 입력하는 것으로 끝난다.  
 repository를 추가하고, 업데이트하고, 설치하면 끝이다.
 
@@ -29,12 +29,12 @@ $ sudo apt-get update
 $ sudo apt-get install indicator-stickynotes
 ```
 
-<br/>
+<br>
 설치 완료.
 
 ![installed_indicator-stickynotes](/assets/images/2019-07-11-ubuntu-stickynotes_002.png)
 
-<br/>
+<br>
 Python과 GTK기반으로 동작하는 앱이라 업데이트 시 꼬이는 경우도 있는 것 같지만 2019년 7월 기준으로 아직까지 잘 관리되며 업데이트 되고 있기에 별 일 없는 이상 계속 사용할 예정이다.
 
 작성 완료된 건 자물쇠 아이콘을 클릭해서 실수로 지워지지 않도록 수정 불가모드를 켤 수도 있고, 하트 아이콘을 눌러 카테고리를 설정하거나 Always On을 설정할 수 도 있다.  
