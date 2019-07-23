@@ -42,7 +42,7 @@ GRUB_CMDLINE_LINUX=""
 변경된 GRUB 설정을 적용하려면 update를 시켜줘야 한다.
 
 ```bash
-sudo update-grub
+$ sudo update-grub
 ```
 
 OS 선택 대기시간이 1초라 부팅이 빠르고, OS 변경이 필요할 시에도 키보드를 통해 충분히 다른 OS로 부팅이 가능하다.
