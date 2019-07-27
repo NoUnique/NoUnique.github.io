@@ -6,7 +6,7 @@ tags:
   - Dev_setting
 ---
 
-우분투 파일교환을 위해 Samba Server를 설치해보자
+우분투 서버와의 파일교환을 위해 Samba Server를 설치해보자
 
 <!--more-->
 
