@@ -1,5 +1,5 @@
 ---
-title: "Dev: 우분투 - SSH서버 설치하기"
+title: "Dev: 우분투 - SSH 서버 설치하기"
 categories:
   - Development
 tags:

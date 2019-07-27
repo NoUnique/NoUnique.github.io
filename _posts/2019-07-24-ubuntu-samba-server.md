@@ -1,5 +1,5 @@
 ---
-title: "Dev: 우분투 - Samba서버 설치하기"
+title: "Dev: 우분투 - Samba 서버 설치하기"
 categories:
   - Development
 tags:

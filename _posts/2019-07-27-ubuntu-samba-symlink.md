@@ -1,5 +1,5 @@
 ---
-title: "Dev: 우분투 - Samba서버 심볼릭 링크 접근하기"
+title: "Dev: 우분투 - Samba 서버 심볼릭 링크 접근하기"
 categories:
   - Development
 tags:
