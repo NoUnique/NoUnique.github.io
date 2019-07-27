@@ -35,13 +35,13 @@ $ sudo vi /etc/samba/smb.conf
 
 {% highlight bash linenos %}
 [nounique]
-   comment = Users profiles
-   path = /home/nounique/
-   guest ok = no
-   read only = no
-   browseable = yes 
-   create mask = 0644
-   directory mask = 0755
+    comment = Users profiles
+    path = /home/nounique/
+    guest ok = no
+    read only = no
+    browseable = yes 
+    create mask = 0644
+    directory mask = 0755
 {% endhighlight %}
 
 ![samba-setting](/assets/images/2019-07-24-ubuntu-samba-server_001.png)
