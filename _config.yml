@@ -107,7 +107,7 @@ analytics:
 # Site Author
 author:
   name             : "NoUnique"
-  avatar           : "/assets/images/profile-icon.jpg"
+  avatar           : "/assets/images/profile-logo.png"
   bio              : "Engineer. Developer. Researcher"
   location         : "Seoul, South Korea"
   email            :
