@@ -71,9 +71,26 @@ $ xbindkeys
 ```
 
 <br>
-행여나 설정이 적용되지 않으면 설정파일을 강제적용시키면 된다.
+행여나 설정파일의 위치를 인식하지 못하면 설정파일 위치를 지정해주면 된다.
 ```bash
 $ killall xbindkeys
 
 $ xbindkeys -f ~/.xbindkeysrc
 ```
+
+--- 19.10.21 추가내용 ---
+
+내 원격환경에서  버튼을 눌렀을 때 두 번 눌린 것처럼 인식되는 문제가 있어 스크립트를 수정했다.
+<br>
+(한번 눌렀음에도 press -> release -> press -> release 이벤트 발생)
+
+파일 생성/삭제와 존재여부 체크를 변수 토글처럼 이용해서 0.5초 내에 버튼이 두번 눌릴 경우 앞으로/뒤로 가기 기능이 동작하도록 수정하였다.
+(방향키의 keydown -> keyup도 key 하나로 수정)
+
+{% highlight bash linenos %}
+"if ls ~/.xbk_double_m6; then xte 'keydown Alt_L' 'key Left' 'keyup Alt_L'; else touch ~/.xbk_double_m6; sleep .5; rm ~/.xbk_double_m6; fi"
+    b:6 
+
+"if ls ~/.xbk_double_m7; then xte 'keydown Alt_L' 'key Right' 'keyup Alt_L'; else touch ~/.xbk_double_m7; sleep .5; rm ~/.xbk_double_m7; fi"
+    b:7
+{% endhighlight %}
