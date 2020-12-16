@@ -13,21 +13,13 @@ COMPOSE_PROJECT_NAME=${COMPOSE_PROJECT_NAME:="$(echo "${DIRNAME}" | sed 's/[^0-9
 
 function fn_configure() {
     NO_CACHE=${NO_CACHE:=""}
-    IS_RUNNING=${IS_RUNNING:="FALSE"}
     IS_EXIST=${IS_EXIST:="FALSE"}
-    IS_RELEASE=${IS_RELEASE:="FALSE"}
+    IS_RUNNING=${IS_RUNNING:="FALSE"}
     DO_BUILD=${DO_BUILD:="FALSE"}
     DO_RUN=${DO_RUN:="FALSE"}
     DO_BASH=${DO_BASH:="FALSE"}
     DO_KILL=${DO_KILL:="FALSE"}
     DO_DOWN=${DO_DOWN:="FALSE"}
-}
-
-function fn_is_running() {
-    IS_RUNNING=`docker ps -q --no-trunc | grep $(docker-compose -f ${SCRIPT_DIR}/${COMPOSE_FNAME} -p ${COMPOSE_PROJECT_NAME} ps -q ${DEFAULT_SERVICE})`
-    if [[ "${IS_RUNNING}" != "FALSE" ]] && [[ -n "${IS_RUNNING}" ]]; then
-        IS_RUNNING="TRUE"
-    fi
 }
 
 function fn_is_exist() {
@@ -37,23 +29,24 @@ function fn_is_exist() {
     fi
 }
 
-function fn_check_release() {
-    if [[ "${IS_RELEASE}" == "TRUE" ]]; then
-        DEFAULT_SERVICE="release"
+function fn_is_running() {
+    IS_RUNNING=`docker ps -q --no-trunc | grep $(docker-compose -f ${SCRIPT_DIR}/${COMPOSE_FNAME} -p ${COMPOSE_PROJECT_NAME} ps -q ${DEFAULT_SERVICE})`
+    if [[ "${IS_RUNNING}" != "FALSE" ]] && [[ -n "${IS_RUNNING}" ]]; then
+        IS_RUNNING="TRUE"
     fi
 }
 
 function fn_build() {
-    echo "Build '${COMPOSE_PROJECT_NAME}' docker image"
+    echo "Build '${COMPOSE_PROJECT_NAME}_${DEFAULT_SERVICE}' docker image"
     docker-compose -f ${SCRIPT_DIR}/${COMPOSE_FNAME} -p ${COMPOSE_PROJECT_NAME} build ${NO_CACHE} ${DEFAULT_SERVICE}
 }
 
 function fn_run() {
     fn_is_running
     if [[ "${IS_RUNNING}" == "TRUE" ]]; then
-        fn_down
+        fn_kill
     fi
-    echo "Run '${COMPOSE_PROJECT_NAME}' docker container"
+    echo "Run '${COMPOSE_PROJECT_NAME}_${DEFAULT_SERVICE}' docker container"
     docker-compose -f ${SCRIPT_DIR}/${COMPOSE_FNAME} -p ${COMPOSE_PROJECT_NAME} up -d ${DEFAULT_SERVICE}
 }
 
@@ -62,17 +55,17 @@ function fn_bash() {
     if [[ "${IS_RUNNING}" != "TRUE" ]]; then
         fn_run
     fi
-    echo "Connect to shell of '${COMPOSE_PROJECT_NAME}' docker container"
+    echo "Connect to shell of '${COMPOSE_PROJECT_NAME}_${DEFAULT_SERVICE}' docker container"
     docker-compose -f ${SCRIPT_DIR}/${COMPOSE_FNAME} -p ${COMPOSE_PROJECT_NAME} exec ${DEFAULT_SERVICE} /bin/bash
 }
 
 function fn_kill() {
     fn_is_running
     if [[ "${IS_RUNNING}" == "TRUE" ]]; then
-        echo "Kill '${COMPOSE_PROJECT_NAME}' docker container"
-        docker-compose -f ${SCRIPT_DIR}/${COMPOSE_FNAME} -p ${COMPOSE_PROJECT_NAME} kill
+        echo "Kill '${COMPOSE_PROJECT_NAME}_${DEFAULT_SERVICE}' docker container"
+        docker-compose -f ${SCRIPT_DIR}/${COMPOSE_FNAME} -p ${COMPOSE_PROJECT_NAME} kill ${DEFAULT_SERVICE}
     else
-        echo "There is no running '${COMPOSE_PROJECT_NAME}' docker container"
+        echo "There is no running '${COMPOSE_PROJECT_NAME}_${DEFAULT_SERVICE}' docker container"
     fi
 }
 
@@ -86,7 +79,6 @@ function fn_down() {
 
 function fn_main() {
     fn_configure
-    fn_check_release
     if [[ "${DO_DOWN}" == "TRUE" ]]; then
         fn_down
     elif [[ "${DO_KILL}" == "TRUE" ]]; then
@@ -135,7 +127,7 @@ while getopts "${optspec}" optchar; do
 
                 release)
                     echo "Parsing option: '--${OPTARG}', release mode";
-                    IS_RELEASE="TRUE"
+                    DEFAULT_SERVICE="release"
                     ;;
 
                 *)

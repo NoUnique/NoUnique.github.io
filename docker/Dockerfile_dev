@@ -7,16 +7,21 @@ RUN apk add tzdata \
  && apk del tzdata
 
 # to build gem libraries
-RUN apk add make \
-            gcc \
-            g++ \
-            libc-dev \
-            libxml2-dev \
-            libxslt-dev
+RUN apk add \
+    build-base \
+    make \
+    gcc \
+    g++ \
+    libc-dev \
+    libxml2-dev \
+    libxslt-dev \
+    ;
 
 ADD ./Gemfile ./
 RUN bundle install
 
 # for debugging
-RUN apk add bash \
-            vim
+RUN apk add \
+    bash \
+    vim \
+    ;

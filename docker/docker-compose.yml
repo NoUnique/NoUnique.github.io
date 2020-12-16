@@ -1,13 +1,5 @@
 version: '2.0'
 
-volumes:
-  dev:
-    driver: local
-    driver_opts:
-      device: "/home/nounique/_GIT_REPO/pages"
-      o: bind
-      type: none
-
 services:
   dev:
     build:
@@ -19,7 +11,7 @@ services:
     ports:
       - "4001:4000"
     volumes:
-      - dev:/srv/jekyll:rw
+      - ..:/srv/jekyll:rw
       - ~/.bashrc:/root/.bashrc
       - ~/.vimrc:/root/.vimrc
     environment:
@@ -42,7 +34,7 @@ services:
     ports:
       - "4000:4000"
     volumes:
-      - dev:/srv/jekyll:rw
+      - ..:/srv/jekyll:rw
       - ~/.bashrc:/root/.bashrc
       - ~/.vimrc:/root/.vimrc
     environment:
